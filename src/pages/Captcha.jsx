@@ -4,13 +4,15 @@ import CaptchaSolver from '../components/CaptchaSolver';
 import Note from '../components/Note';
 import Points from '../components/Points';
 import Refer from '../components/Refer';
+import { getSessionId } from '../utils/utils';
 
 function Captcha() {
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const [coinBalance, setCoinBalance] = useState(0);
   const [stats, setStats] = useState({ correct: 0, incorrect: 0, skipped: 0 });
-  const userId = 'user123'; // Example user ID (replace with dynamic user handling if needed)
+  const sessionId = getSessionId();
+  const userId = sessionId;
 
   useEffect(() => {
     const fetchStats = async () => {
